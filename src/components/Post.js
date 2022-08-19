@@ -8,7 +8,7 @@ import {
 import AddComment from "./AddComment";
 
 import Author from "./Author";
-import Comments from "./comments";
+import Comments from "./Comments";
 
 export default ({ image, comments, email, nickname }) => {
 
