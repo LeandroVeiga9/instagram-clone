@@ -5,6 +5,7 @@ import {
   Image,
   Dimensions
 } from "react-native";
+import AddComment from "./AddComment";
 
 import Author from "./Author";
 import Comments from "./comments";
@@ -15,6 +16,7 @@ export default ({ image, comments }) => {
       <Image source={image} style={styles.image} />
       <Author email="fulano@gmail.com" nickname="fulano" />
       <Comments comments={comments} />
+      <AddComment />
     </View>
   )
 }
