@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
   title: {
     color: '#000',
     height: 30,
-    fontSize: 25
+    fontSize: 21
   }
 })
