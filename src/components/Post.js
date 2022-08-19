@@ -10,11 +10,12 @@ import AddComment from "./AddComment";
 import Author from "./Author";
 import Comments from "./comments";
 
-export default ({ image, comments }) => {
+export default ({ image, comments, email, nickname }) => {
+
   return (
     <View style={styles.container}>
       <Image source={image} style={styles.image} />
-      <Author email="fulano@gmail.com" nickname="fulano" />
+      <Author email={email} nickname={nickname} />
       <Comments comments={comments} />
       <AddComment />
     </View>
