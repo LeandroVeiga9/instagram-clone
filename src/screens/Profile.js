@@ -2,11 +2,11 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Gravatar } from "react-native-gravatar";
 
-export default () => {
+export default (props) => {
   const options = { email: 'fulanodetal@gmail.com', secure: true }
   
   const logout = () => {
-
+    props.navigation.navigate('Auth')
   }
 
   return (

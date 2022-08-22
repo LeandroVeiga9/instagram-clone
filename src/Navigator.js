@@ -1,17 +1,29 @@
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack';
+
 
 import Icon from "react-native-vector-icons/FontAwesome";
 import Feed from "./screens/Feed";
 import AddPhoto from "./screens/AddPhoto";
 import Profile from "./screens/Profile";
+import Login from "./screens/Login";
 
 const Tab = createBottomTabNavigator()
+const Stack = createStackNavigator();
+
+const ProfileScreen = () => {
+  return (
+    <Stack.Navigator  initialRouteName="Profile">
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Auth" component={Login} />
+    </Stack.Navigator>
+  )
+}
 
 export default ({ navigation, route }) => (
   <NavigationContainer>
-
     <Tab.Navigator
       initialRouteName={'Feed'}
       screenOptions={{
@@ -35,12 +47,13 @@ export default ({ navigation, route }) => (
         }}
       />
       <Tab.Screen
-        name='Profile'
-        component={Profile}
+        name='ProfileScreen'
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({ tintColor }) => <Icon name='user' size={30} color={tintColor} />
         }}
-      />
+      >
+      </Tab.Screen>
     </Tab.Navigator>
   </NavigationContainer>
 )
