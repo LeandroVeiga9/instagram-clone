@@ -1,11 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Gravatar } from "react-native-gravatar";
+import { logout } from "../store/actions/user";
+import { useDispatch, useSelector } from "react-redux";
 
 export default (props) => {
-  const options = { email: 'fulanodetal@gmail.com', secure: true }
-  
+  const user = useSelector(state => state.user)
+  const options = { email: user.email, secure: true }
+  const dispatch = useDispatch()
+
   const logout = () => {
+    dispatch(logout())
     props.navigation.navigate('Auth')
   }
 

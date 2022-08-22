@@ -1,35 +1,39 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { login as loginAction } from '../store/actions/user'
+import { useDispatch } from "react-redux";
 
 export default (props) => {
-  const [user, setUser] = useState({ email: '', password: '' })
+  const [user, setUser] = useState({ name: 'temp', email: '', password: '' })
+  const dispatch = useDispatch()
 
   const login = () => {
+    dispatch(loginAction(user))
     props.navigation.navigate('Profile')
   }
 
   return (
     <View style={styles.container}>
-      <TextInput 
-        style={styles.input} 
-        placeholder="email" 
-        autoFocus={true} 
+      <TextInput
+        style={styles.input}
+        placeholder="email"
+        autoFocus={true}
         keyboardType='email-address'
         value={user.email}
-        onChangeText={email => setUser({...user, email})}
+        onChangeText={email => setUser({ ...user, email })}
       />
-      <TextInput 
-        style={styles.input} 
-        placeholder="senha" 
+      <TextInput
+        style={styles.input}
+        placeholder="senha"
         secureTextEntry={true}
         value={user.password}
-        onChangeText={password => setUser({...user, password})}
+        onChangeText={password => setUser({ ...user, password })}
       />
       <TouchableOpacity onPress={login} style={styles.button}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => props.navigation.navigate('Register')} style={styles.button}>
-      <Text style={styles.buttonText}>Criar nova conta</Text>
+        <Text style={styles.buttonText}>Criar nova conta</Text>
       </TouchableOpacity>
     </View>
   )
