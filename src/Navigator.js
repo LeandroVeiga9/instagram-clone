@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native'
 
 import Icon from "react-native-vector-icons/FontAwesome";
 import Feed from "./screens/Feed";
+import AddPhoto from "./screens/AddPhoto";
+// import Profile from "./screens/Profile";
 
 const Tab = createBottomTabNavigator()
 
@@ -15,7 +17,7 @@ export default ({ navigation, route }) => (
       screenOptions={{
         headerShown: false,
         // tabBarShowLabel: false,
-        tabBarActiveTintColor: '#f00'
+        tabBarActiveTintColor: '#33f'
       }}
     >
       <Tab.Screen
@@ -27,7 +29,7 @@ export default ({ navigation, route }) => (
       />
       <Tab.Screen
         name='AddPhoto'
-        component={Feed}
+        component={AddPhoto}
         options={{
           tabBarIcon: ({ tintColor }) => <Icon name='camera' size={30} color={tintColor} />
         }}
