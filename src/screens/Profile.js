@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Gravatar } from "react-native-gravatar";
-import { logout } from "../store/actions/user";
+import { logout as logoutAction } from "../store/actions/user";
 import { useDispatch, useSelector } from "react-redux";
 
 export default (props) => {
@@ -10,7 +10,7 @@ export default (props) => {
   const dispatch = useDispatch()
 
   const logout = () => {
-    dispatch(logout())
+    dispatch(logoutAction())
     props.navigation.navigate('Auth')
   }
 
