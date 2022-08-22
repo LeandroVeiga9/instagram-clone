@@ -1,8 +1,16 @@
+import React from 'react';
 import { registerRootComponent } from 'expo';
 
 import Navigator from './src/Navigator'
+import { Provider } from 'react-redux'
+import storeConfig from './src/store/storeConfig'
 
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
-registerRootComponent(Navigator);
+const store = storeConfig()
+
+const Redux = () => (
+  <Provider store={store}>
+    <Navigator />
+  </Provider>
+)
+
+registerRootComponent(Redux);
