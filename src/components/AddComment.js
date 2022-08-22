@@ -8,14 +8,27 @@ import {
   TextInput
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useDispatch, useSelector } from "react-redux";
+import { addComment } from "../store/actions/posts";
 
-export default () => {
+export default ({ postId }) => {
 
   const [comment, setComment] = useState('')
   const [editMode, setEditMode] = useState(false)
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
 
   const handleAddComment = () => {
-    Alert.alert("adicionado", comment)
+    dispatch(addComment({
+      postId,
+      comment: {
+        nickname: user.name,
+        comment
+      }
+    }))
+
+    setComment('')
+    setEditMode(false)
   }
 
   const renderComponent = () => {
