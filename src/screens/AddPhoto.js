@@ -12,15 +12,19 @@ import {
   Dimensions
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { addPost } from '../store/actions/posts'
+import { useDispatch, useSelector } from "react-redux";
 
-export default () => {
+export default (props) => {
   const [image, setImage] = useState(null)
   const [comment, setComment] = useState('')
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
 
   const pickImage = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    
-    if (status!== 'granted') {
+
+    if (status !== 'granted') {
       return
     }
 
@@ -36,7 +40,20 @@ export default () => {
   }
 
   const save = async () => {
-    Alert.alert('imagem adicionada', this.state.comment)
+    dispatch(addPost({
+      id: Math.random(),
+      nickname: user.name,
+      email: user.email,
+      image: image,
+      comments: [{
+        nickname: user.name,
+        comment
+      }]
+    }))
+
+    setImage(null)
+    setComment('')
+    props.navigation.navigate('Feed')
   }
 
   return (

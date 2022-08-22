@@ -17,8 +17,8 @@ export default (props) => {
   return (
     <View style={styles.container}>
       <Gravatar options={options} style={styles.avatar} />
-      <Text style={styles.nickname}>Fulano de tal</Text>
-      <Text style={styles.email}>fulanodetal@gmail.com</Text>
+      <Text style={styles.nickname}>{user.name}</Text>
+      <Text style={styles.email}>{user.email}</Text>
       <TouchableOpacity onPress={logout} style={styles.button}>
         <Text style={styles.buttonText}>Sair</Text>
       </TouchableOpacity>

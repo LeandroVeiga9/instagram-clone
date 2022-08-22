@@ -7,34 +7,10 @@ import {
 } from "react-native";
 import Header from "../components/Header";
 import Post from "../components/Post";
+import { useSelector } from "react-redux";
 
 export default () => {
-
-  const [posts, setPosts] = useState([
-    {
-      id: Math.random(),
-      nickname: 'rafael',
-      email: 'rafael@gmail.com',
-      image: require('../../assets/imgs/fence.jpg'),
-      comments: [
-        {
-          nickname: 'john',
-          comment: 'brabo'
-        },
-        {
-          nickname: 'róger',
-          comment: 'limdo'
-        },
-      ]
-    },
-    {
-      id: Math.random(),
-      nickname: 'francisco',
-      email: 'francisco@gmail.com',
-      image: require('../../assets/imgs/bw.jpg'),
-      comments: []
-    },
-  ])
+  const posts = useSelector(state => state.posts.posts)
 
   return (
     <View style={styles.container}>
