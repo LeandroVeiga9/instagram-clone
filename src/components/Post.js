@@ -5,6 +5,7 @@ import {
   Image,
   Dimensions
 } from "react-native";
+import { useSelector } from "react-redux";
 import AddComment from "./AddComment";
 
 import Author from "./Author";
@@ -12,12 +13,14 @@ import Comments from "./Comments";
 
 export default ({ image, comments, email, nickname, id }) => {
 
+  const user = useSelector(state => state.user)
+
   return (
     <View style={styles.container}>
       <Image source={image} style={styles.image} />
       <Author email={email} nickname={nickname} />
       <Comments comments={comments} />
-      <AddComment postId={id} />
+      {user.name && <AddComment postId={id} />}
     </View>
   )
 }

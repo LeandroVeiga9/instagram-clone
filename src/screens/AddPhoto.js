@@ -20,8 +20,14 @@ export default (props) => {
   const [comment, setComment] = useState('')
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
+  const noUser = 'voce precisa estar logado para adicionar imagens'
 
   const pickImage = async () => {
+    if (!user.name) {
+      Alert.alert('falha', noUser)
+      return
+    }
+
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (status !== 'granted') {
@@ -71,10 +77,11 @@ export default (props) => {
           style={styles.input}
           value={comment}
           onChangeText={comment => setComment(comment)}
+          editable={!!user.name}
         />
-        <TouchableOpacity onPress={save} style={styles.button}>
+        {!!image && <TouchableOpacity onPress={save} style={styles.button}>
           <Text style={styles.buttonText}>Salvar</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>}
       </View>
     </ScrollView>
   )
