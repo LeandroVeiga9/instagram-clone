@@ -28,7 +28,7 @@ export default (props) => {
       <TouchableOpacity onPress={login} style={styles.button}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => {}} style={styles.button}>
+      <TouchableOpacity onPress={() => props.navigation.navigate('Register')} style={styles.button}>
       <Text style={styles.buttonText}>Criar nova conta</Text>
       </TouchableOpacity>
     </View>
